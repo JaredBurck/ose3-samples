@@ -81,7 +81,7 @@ if [ -z $TOKEN ]; then
 fi
 
 # Get build config for app
-BUILD_CONFIG=$(curl -s -H "Authorization: Bearer ${TOKEN}" --insecure -f https://${HOST}:${PORT}/osapi/v1beta3/namespaces/${NAMESPACE}/buildconfigs/${APP})
+BUILD_CONFIG=$(curl -s -H "Authorization: Bearer ${TOKEN}" --insecure -f https://${HOST}:${PORT}/osapi/v1/namespaces/${NAMESPACE}/buildconfigs/${APP})
 
 if [ -z "$BUILD_CONFIG" ]; then
     echo "Error locating build config"
@@ -92,7 +92,7 @@ fi
 UPDATED_BUILD_CONFIG=$(echo "$BUILD_CONFIG" | jq ".spec.strategy.sourceStrategy.env |= map(if .name == \"SRC_APP_URL\" then . + {\"value\":\"$SOURCE\"} else . end)")
 
 # Update buildconfig in OSE
-curl -s -X PUT -d "${UPDATED_BUILD_CONFIG}" -H "Authorization: Bearer ${TOKEN}" --insecure -f https://${HOST}:8443/osapi/v1beta3/namespaces/${NAMESPACE}/buildconfigs/${APP} > /dev/null
+curl -s -X PUT -d "${UPDATED_BUILD_CONFIG}" -H "Authorization: Bearer ${TOKEN}" --insecure -f https://${HOST}:8443/osapi/v1/namespaces/${NAMESPACE}/buildconfigs/${APP} > /dev/null
 
 if [  $? -ne 0  ]; then
     echo "Error updating build configuration"

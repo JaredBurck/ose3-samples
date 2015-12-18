@@ -1,6 +1,6 @@
 {
     "kind": "Config",
-    "apiVersion": "v1beta1",
+    "apiVersion": "v1",
     "metadata": {
         "creationTimestamp": null
     },
@@ -30,7 +30,7 @@
             "kind": "Service",
             "id": "tm-app-http-service",
             "creationTimestamp": null,
-            "apiVersion": "v1beta1",
+            "apiVersion": "v1",
             "annotations": {
                 "description": "The web server's http port."
             },
@@ -58,7 +58,7 @@
             "kind": "Service",
             "id": "tm-app-ping",
             "creationTimestamp": null,
-            "apiVersion": "v1beta1",
+            "apiVersion": "v1",
             "annotations": {
                 "description": "Ping service for clustered applications."
             },
@@ -85,7 +85,7 @@
         },
         {
             "kind": "Route",
-            "apiVersion": "v1beta1",
+            "apiVersion": "v1",
             "metadata": {
                 "name": "tm-app-http-route",
                 "creationTimestamp": null,
@@ -102,7 +102,7 @@
         },
         {
             "kind": "ImageStream",
-            "apiVersion": "v1beta1",
+            "apiVersion": "v1",
             "metadata": {
                 "name": "tm-app",
                 "creationTimestamp": null,
@@ -118,7 +118,7 @@
         },
         {
             "kind": "BuildConfig",
-            "apiVersion": "v1beta1",
+            "apiVersion": "v1",
             "metadata": {
                 "name": "tm-app",
                 "creationTimestamp": null,
@@ -188,7 +188,7 @@
         },
         {
             "kind": "DeploymentConfig",
-            "apiVersion": "v1beta1",
+            "apiVersion": "v1",
             "metadata": {
                 "name": "tm-app",
                 "creationTimestamp": null,

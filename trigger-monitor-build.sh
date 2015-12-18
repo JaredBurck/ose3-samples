@@ -100,7 +100,7 @@ fi
 echo "Triggering new build of ${APP}..."
 
 
-NEW_BUILD_REQUEST=$(curl -s -f -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/json" -X POST --data-binary "{\"kind\":\"BuildRequest\",\"apiVersion\":\"v1beta3\",\"metadata\":{\"name\":\"$APP\"}}" --insecure  https://${HOST}:${PORT}/osapi/v1beta3/namespaces/${NAMESPACE}/buildconfigs/${APP}/instantiate)
+NEW_BUILD_REQUEST=$(curl -s -f -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/json" -X POST --data-binary "{\"kind\":\"BuildRequest\",\"apiVersion\":\"v1\",\"metadata\":{\"name\":\"$APP\"}}" --insecure  https://${HOST}:${PORT}/osapi/v1/namespaces/${NAMESPACE}/buildconfigs/${APP}/instantiate)
 
 BUILD_NAME=$(echo $NEW_BUILD_REQUEST | jq -r .metadata.name)
 
@@ -116,7 +116,7 @@ echo "New build created: $BUILD_NAME"
 while [ $COUNTER -lt $MAX_COUNTER ]
 do
 	
-	BUILD_STATUS_RESPONSE=$(curl -s -f -H "Authorization: Bearer ${TOKEN}" --insecure  https://${HOST}:${PORT}/osapi/v1beta3/namespaces/${NAMESPACE}/builds/${BUILD_NAME})
+	BUILD_STATUS_RESPONSE=$(curl -s -f -H "Authorization: Bearer ${TOKEN}" --insecure  https://${HOST}:${PORT}/osapi/v1/namespaces/${NAMESPACE}/builds/${BUILD_NAME})
 	
 	BUILD_STATUS=$(echo $BUILD_STATUS_RESPONSE | jq -r .status.phase)
 	

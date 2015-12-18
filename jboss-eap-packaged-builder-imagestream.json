@@ -1,20 +1,20 @@
 {
   "kind": "ImageStream",
-  "apiVersion": "v1beta3",
+  "apiVersion": "v1",
   "metadata": {
     "name": "jboss-eap-packaged-builder"
   },
   "spec": {
-    "dockerImageRepository": "sabre1041/jboss-eap-packaged-builder",
+    "dockerImageRepository": "JaredBurck/jboss-eap-packaged-builder",
     "tags": [
       {
-        "name": "3.0",
+        "name": "3.1",
         "annotations": {
           "description": "Provides JBoss EAP Images containing packaged applications",
           "iconClass": "icon-jboss",
           "tags": "builder,jboss",
           "supports": "eap:6.4,jee,java",
-          "version": "3.0"
+          "version": "3.1"
         }
       }
     ]
